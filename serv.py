@@ -143,9 +143,5 @@ def resource_not_found(e):
 def bad_request(e):
     return jsonify(error=str(e)), 400
 
-
 if __name__ == '__main__':
-    os.system('python sql.py')
     app.run(debug=True, host="0.0.0.0", port=8912)
-    # r = translate("bye", "spanish")
-    # print(r)

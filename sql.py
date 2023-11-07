@@ -33,8 +33,6 @@ def create_table():
     conn.commit()
     conn.close()
 
-import sqlite3
-
 class Translation:
     db_path = 'translations.db'  # Path to your SQLite database file
     

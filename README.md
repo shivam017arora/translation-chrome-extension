@@ -1,7 +1,91 @@
-# Translation Service API Documentation
+# Translation Chrome Extension
 
-## Overview
-This document outlines the usage of the Translation Service API which allows a Chrome extension to fetch translations for words in different languages. The API supports CRUD operations for translations.
+This project is a Chrome extension that allows users to translate text between languages via a simple browser interface. It communicates with a backend API to fetch and store translations.
+
+## Getting Started
+
+### Prerequisites
+
+- Python 3.x
+- pip (Python package installer)
+- Flask
+- SQLAlchemy
+- Google Chrome or any Chromium-based browser
+
+### Installing
+
+A step by step series of examples that tell you how to get a development environment running.
+
+1. **Clone the repository**
+
+```sh
+git clone https://github.com/yourusername/translation_chrome_extension.git
+cd translation_chrome_extension
+```
+
+2. **Set up a virtual environment** (optional, but recommended)
+
+```sh
+python -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+```
+
+3. **Install the requirements**
+
+```sh
+pip install -r requirements.txt
+```
+
+4. **Set up environment variables**
+
+Copy the `.env.example` file to create a `.env` that will store your environment variables.
+
+```sh
+cp .env.example .env
+```
+
+Edit the `.env` file with your specific configurations.
+
+5. **Initialize the database**
+
+```sh
+python sql.py
+```
+
+6. **Run the Flask application**
+
+```sh
+python serv.py
+```
+
+This will start the backend server on `http://localhost:8912/`.
+
+### Setting up the Chrome Extension
+
+1. Open Google Chrome and navigate to `chrome://extensions/`.
+2. Enable `Developer mode` by toggling the switch in the top right corner.
+3. Click on `Load unpacked` and select the directory containing the Chrome extension (`plasmo-assessment-ai`).
+
+The extension should now be installed and will interact with the local API server for translations.
+
+## Running the tests
+
+To run the automated tests for this system:
+
+```sh
+pytest test_api.py
+```
+
+## Usage
+
+To use the Chrome extension:
+
+1. Click on the extension icon in the Chrome toolbar.
+2. Enter the text you wish to translate.
+3. Select the target language from the dropdown.
+4. Click 'Translate' to receive the translation.
+
+# API DOCUMENTATION
 
 ## Base URL
 `http://localhost:8912`
