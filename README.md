@@ -1,0 +1,114 @@
+# Translation Service API Documentation
+
+## Overview
+This document outlines the usage of the Translation Service API which allows a Chrome extension to fetch translations for words in different languages. The API supports CRUD operations for translations.
+
+## Base URL
+`http://localhost:8912`
+
+## Supported Languages
+- English
+- Spanish
+- French
+(Additional languages can be added as per requirement.)
+
+## Endpoints
+
+### GET /translations
+Retrieves a translation for the given word and target language.
+
+#### Query Parameters:
+- `word`: The word to be translated (required).
+- `language`: The target language for translation (required).
+
+#### Success Response:
+- **Code:** 200 OK
+- **Content:** 
+  ```json
+  {
+    "word": "hello",
+    "language": "spanish",
+    "translation": "hola"
+  }
+  ```
+
+#### Error Response:
+- **Code:** 400 BAD REQUEST
+- **Content:** `{ "error": "Please provide both 'word' and 'language' parameters." }`
+- **Code:** 404 NOT FOUND
+- **Content:** `{ "error": "Translation not found." }`
+
+### POST /translations
+Adds a new translation to the database.
+
+#### Body Parameters (application/json):
+- `word`: The word to be translated (required).
+- `language`: The target language for translation (required).
+- `translation`: The translated word (required).
+
+#### Success Response:
+- **Code:** 201 CREATED
+- **Content:** 
+  ```json
+  {
+    "id": 1,
+    "word": "goodbye",
+    "language": "spanish",
+    "translation": "adios"
+  }
+  ```
+
+#### Error Response:
+- **Code:** 400 BAD REQUEST
+- **Content:** `{ "error": "Please provide 'word', 'language', and 'translation' fields." }`
+- **Code:** 409 CONFLICT
+- **Content:** `{ "error": "Translation already exists." }`
+
+### PUT /translations
+Updates an existing translation in the database.
+
+#### Body Parameters (application/json):
+- `word`: The word to be translated (required).
+- `language`: The target language for translation (required).
+- `translation`: The new translation (required).
+
+#### Success Response:
+- **Code:** 200 OK
+- **Content:** 
+  ```json
+  {
+    "word": "goodbye",
+    "language": "french",
+    "translation": "au revoir"
+  }
+  ```
+
+#### Error Response:
+- **Code:** 400 BAD REQUEST
+- **Content:** `{ "error": "Please provide 'word', 'language', and 'translation' fields." }`
+
+### DELETE /translations
+Deletes a translation from the database.
+
+#### Query Parameters:
+- `word`: The word whose translation is to be deleted (required).
+- `language`: The target language for the translation (required).
+
+#### Success Response:
+- **Code:** 200 OK
+- **Content:** `{ "message": "Translation deleted successfully" }`
+
+#### Error Response:
+- **Code:** 400 BAD REQUEST
+- **Content:** `{ "error": "Please provide both 'word' and 'language' parameters." }`
+- **Code:** 404 NOT FOUND
+- **Content:** `{ "error": "Translation not found." }`
+
+## Error Handling
+The API uses standard HTTP status codes to indicate the success or failure of an API request.
+
+- **200 OK:** The request has succeeded.
+- **201 CREATED:** The request has been fulfilled and has resulted in one or more new resources being created.
+- **400 BAD REQUEST:** The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+- **404 NOT FOUND:** The server can't find the requested resource.
+- **409 CONFLICT:** The request could not be completed due to a conflict with the current state of the target resource.
