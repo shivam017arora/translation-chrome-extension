@@ -2,14 +2,14 @@
 
 This project is a Chrome extension that allows users to translate text between languages via a simple browser interface. It communicates with a backend API to fetch and store translations.
 
-## Getting Started
+# Demo
+<img width="340" alt="demo" src="https://github.com/shivam017arora/translation_chrome_extension/assets/26146104/50e6a482-83d2-4863-90e0-9a8d999f3848">
 
 ### Prerequisites
 
 - Python 3.x
-- pip (Python package installer)
 - Flask
-- SQLAlchemy
+- Sqlite3
 - Google Chrome or any Chromium-based browser
 
 ### Installing
@@ -64,9 +64,8 @@ This will start the backend server on `http://localhost:8912/`.
 
 1. Open Google Chrome and navigate to `chrome://extensions/`.
 2. Enable `Developer mode` by toggling the switch in the top right corner.
-3. Click on `Load unpacked` and select the directory containing the Chrome extension (`plasmo-assessment-ai`).
-
-The extension should now be installed and will interact with the local API server for translations.
+3. Click on `Load unpacked` and select the directory containing the Chrome extension (`plasmo-assessment-ai`). This is where the output of yarn dev is placed.
+The extension should now appear in the list of extensions, and you can pin it to the toolbar for easy access.
 
 ## Running the tests
 
@@ -75,15 +74,6 @@ To run the automated tests for this system:
 ```sh
 pytest test_api.py
 ```
-
-## Usage
-
-To use the Chrome extension:
-
-1. Click on the extension icon in the Chrome toolbar.
-2. Enter the text you wish to translate.
-3. Select the target language from the dropdown.
-4. Click 'Translate' to receive the translation.
 
 # API DOCUMENTATION
 
