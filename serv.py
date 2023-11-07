@@ -35,13 +35,19 @@ config = {
 
 # Initialize Flask app
 app = Flask(__name__)
-cors = CORS(app, origins='http://localhost:3000')
+cors = CORS(app, origins='chrome-extension://mjkkemognlhghilfdkbnjafhelmfbgap')
 
+#make health check endpoint
+@app.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({"message": "Healthy"}), 200
 
 @app.route('/translations', methods=['GET'])
 def get_translation():
     word = request.args.get('word')
     language = request.args.get('language')
+
+    print(word, language)
 
     # Validation
     if not word or not language:

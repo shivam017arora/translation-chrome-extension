@@ -7,3 +7,4 @@ Requests==2.31.0
 Flask-PyMongo 
 pymongo
 dnspython
+pytest

@@ -1,1 +1,6 @@
 .env
+plasmo-assessment-ai/node_modules
+plasmo-assessment-ai/.plasmo
+plasmo-assessment-ai/.pytest_cache
+__pycache__
+.DS_Store
